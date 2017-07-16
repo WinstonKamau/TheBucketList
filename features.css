@@ -1,0 +1,58 @@
+#first_row { background-color : #98D378 ; }
+#second_row { height : max-height }
+#first_column { color:white;  font-size : 50px ; font-family: "Lato" , "Open Sans" , serif; }
+#forgot_account { font-size: 12px; }
+#log_in_button , #submit_button , #create_new_list_item_button { float: right; background-color : #558160 ; font-style: bold; }
+#second_row_second_column { background-color : #D1DCD3; } 
+.theClass { display: inline ; font-family: "Lato" , "Open Sans" , serif ; font-size:50px ; font-style : italic; color : white ; background-color : #98D378 ;}
+.inner_hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 1px;}
+#main_body { background-color : #839D79 ; height: 100% ;}
+.outer_hr { display: block;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 1px;
+	border-color: #839D79 ;
+	}
+.container { height: 100% of the body height , minus footer ; }
+footer {height : 50px ;}
+#myBucketList_second_line , # create_page_top { margin-top: 0.5em;
+    margin-bottom: 0.5em; }
+tr { border-bottom: 1px solid #ddd }
+#title_row { background-color: #D1DCD3;}
+.dropdown { display : inline}
+.header_create_Page { display : inline }
+#create_item {margin:auto ; width : 50% ; font-size : 30px ; font-family: "Open Sans" , serif;}
+#save_button { margin:auto ; width : 50 %}
+.column1 { background-color : #D1DCD3; width: 30%}
+.column2 { width: 70% }
+#header-create-page { border-bottom : green }
+.colourable_ForgottenAccount  { border: 1px solid black ; background-color : #D1DCD3;}
+.search_button { background-color : #D1DCD3;  }
+.cancel_button { background-color : #D1DCD3; }
+#theCancelButton { float: right;}
+#theSearchButton { float: right;}
+#spacer { height : 50px ;}
+#ForgotAccount_hr, #ForgotAccount_hr_1, #ForgotAccount_hr_2{ margin-top: 0.2em;
+    margin-bottom: 0.2em; }
+.first-column {background-color : #D1DCD3; }
+.table, tr td { border-bottom : 1px solid #AAADAE}
+.footer { background-color : #D1DCD3; }
+.panel { background-color : #D1DCD3; }
+.inner_account {  margin-top: 0.2em;
+    margin-bottom: 0.2em;}
+#share-button { background-color: #DAAAAA; }
+#delete-button { background-color: #C7CB95 ;}
+#block_friend { background-color: #DAAAAA; }
+#delete_friend { background-color: #C7CB95 ;}
+.laCol1 { width : 49%}
+.laCol2 { width : 17% }
+.laCol3 { width: 17% }
+.laCol4 { width: 17% }
