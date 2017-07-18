@@ -31,8 +31,6 @@ tr { border-bottom: 1px solid #ddd }
 .table, tr td { border-bottom : 1px solid #AAADAE}
 .footer { background-color : #D1DCD3; }
 #share-button { background-color: #DAAAAA; }
-.laCol1 { width : 50%}
-.laCol2 { width : 50% }
 .laCol-1 { width : 30%}
 .laCol-2 { width : 50% }
 .laCol-3 { width: 20% }
