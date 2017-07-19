@@ -24,3 +24,5 @@ class ActivitiesCrud(object):
                     self.list_items[counter] = new_item
                 counter += 1
             return self.list_items
+    def get_activities_list(self):
+        return self.list_items
