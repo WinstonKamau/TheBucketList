@@ -8,11 +8,11 @@ class BucketActivities(object):
         self.list_items = {self.bucket_name : self.activity_list}
     def create_bucket(self, item_added):
         '''A method that creates a bucket list'''
-        if item_added != "" and isinstance(item_added, str):
+        if item_added != "":
             self.list_items.update({item_added:self.activity_list})
     def update_bucket(self, old_item, new_item):
         '''A method that updates a bucket list'''
-        if new_item != "" and isinstance(new_item, str):
+        if new_item != "":
             old_item_activity_list = self.list_items.get(old_item)
             self.list_items.pop(old_item)
             self.list_items.update({new_item:old_item_activity_list})

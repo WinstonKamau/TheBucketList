@@ -13,11 +13,20 @@ class BucketActivitiesTestCase(unittest.TestCase):
         '''Testing that the create bucket does create a bucket list'''
         self.bucket.create_bucket("Family")
         self.assertEqual(self.bucket.list_items.__contains__("Family"), True)
+    def test_create_bucket_1(self):
+        '''Testing that the create bucket does not create a bucket list if argument is an empty string'''
+        self.bucket.create_bucket("")
+        self.assertEqual(self.bucket.list_items, {"":[]})
     def test_update_bucket(self):
-        '''Testing that the update bucket does create a bucket list appropriately'''
+        '''Testing that the update bucket does update a bucket list appropriately'''
         self.bucket.list_items = {"Family": ["visit"]}
         self.bucket.update_bucket("Family", "Travel")
         self.assertEqual(self.bucket.list_items, {"Travel": ["visit"]})
+    def test_update_bucket_1(self):
+        '''Testing that the update bucket does not update a bucket list if string is empty'''
+        self.bucket.list_items = {"Family": ["visit"]}
+        self.bucket.update_bucket("Family", "")
+        self.assertEqual(self.bucket.list_items, {"Family": ["visit"]})
     def test_delete_bucket(self):
         '''Testing that the delete bucket does delete a bucket list appropriately'''
         self.bucket.list_items = {"Family":["visit"], "Travel" : ["Algeria"]}
