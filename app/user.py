@@ -2,13 +2,12 @@
 from flask import redirect , url_for
 
 from app.bucket_activities import BucketActivities
-users = { "user1" : "password1"}
-user_buckets = {"user1":BucketActivities}
+
 class Users():
     def __init__(self):
-        self.users = users
-        self.user_buckets = user_buckets
+        self.users = { "user1" : "password1"}
         self.bucket = BucketActivities
+        self.user_buckets = {"user1":self.bucket}
     def login_user (self, user_name , password):
         if (user_name != "" and password != "" ):
                 if isinstance ( user_name , str ):
