@@ -36,3 +36,7 @@ class BucketActivitiesTestCase(unittest.TestCase):
         self.bucket.list_items = { "Family": [ "visit" , "gettogether" ]  }
         self.bucket.delete_activity ( "Family" , "visit" )
         self.assertEqual(self.bucket.list_items , { "Family": [ "gettogether" ]} )   
+
+
+if __name__ == '__main__':
+    unittest.main()
