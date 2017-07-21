@@ -1,8 +1,10 @@
 '''A module used to listen on the root of the application and will select
  title and text from the database '''
 #importing the object render_template form flask for returning templates
-from flask import render_template
+from flask import render_template, request
 from app import app
+from app.user import Users
+
 #binding login function to the url /
 @app.route('/')
 def login():
@@ -24,7 +26,7 @@ def add_activities():
     '''a method that returns the route of addactivities in the html'''
     return render_template("AddActivities.html")
 #binding view_bucket_list function to the url /ViewBucketList
-@app.route('/ViewBucketList')
+@app.route('/ViewBucketList', methods = ['POST'])
 def view_bucket_list():
     '''a method that returns the route of viewbucketlist in the html'''
     return render_template("ViewBucketList.html")

@@ -30,9 +30,9 @@
 		  </p>
 		</div>
 		<div class = "col-xs-3 col-md-3" > 
-	      <form class = "input-group-xs" >
+	      <form class = "input-group-xs"  >
 		    <label id = "email-username-addon-tag" >Email/UserName</label>
-		      <input type = "text" class = "form-control input-group-xs" placeholder = "UserName / Email" >
+		      <input type = "text" class = "form-control input-group-xs" id = "username"placeholder = "UserName / Email" >
 					 <a>
 				  <em >
 				    Register Account    
@@ -41,11 +41,13 @@
 				</form>
 		</div>
 		<div class = "col-xs-3 col-md-3" > 
-		  <form class = "input-group-xs" >
+		  <form class = "input-group-xs" action = "{{ url_for('view_bucket_list') }}" method = "post" >
+				<d1>
 		    <label for = "password_Input" id = "user-password" >Password</label>
 		    <input type = "password" class = "form-control input-group-xs" id = "password_Input" placeholder = "Password">
-		    <input type = "submit" id = "log_in_button" class = "btn btn-default btn-sm" value = "Log in">
-		  </form>
+		    <input type = "submit" id = "log_in_button" onclick = "{{ url_for('view_bucket_list') }}" class = "btn btn-default btn-sm" value = "Log in">
+				</d1>
+			</form>
 		</div>
 		<div class = "clearfix visible-xs-block ">
 		  </div>

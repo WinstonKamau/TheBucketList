@@ -19,6 +19,7 @@ class Users():
             if self.user_name in self.users:
                 if self.users.get(self.user_name)==self.password:
                     self.test = "user logged in"
+                    return self.test
                 else:
                     self.test = "invalid password"
             else:
