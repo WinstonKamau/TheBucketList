@@ -16,7 +16,7 @@ def register():
     '''a method that returns the route of register in the html'''
     return render_template("Register.html")
 #binding create_bucket_list function to the url /CreateBucketList
-@app.route('/CreateBucketList')
+@app.route('/CreateBucketList', methods = ['POST'])
 def create_bucket_list():
     '''a method that returns the route of createbucketlist in the html'''
     return render_template("CreateBucketList.html")

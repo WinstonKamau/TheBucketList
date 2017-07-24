@@ -41,11 +41,11 @@
 				</form>
 		</div>
 		<div class = "col-xs-3 col-md-3" > 
-		  <form class = "input-group-xs" action = "{{ url_for('view_bucket_list') }}" method = "post" >
+		  <form class = "input-group-xs" method = "post" >
 				<d1>
 		    <label for = "password_Input" id = "user-password" >Password</label>
 		    <input type = "password" class = "form-control input-group-xs" id = "password_Input" placeholder = "Password">
-		    <input type = "submit" id = "log_in_button" onclick = "{{ url_for('view_bucket_list') }}" class = "btn btn-default btn-sm" value = "Log in">
+		    <input type = "submit" id = "log_in_button" class = "btn btn-default btn-sm" value = "Log in">
 				</d1>
 			</form>
 		</div>
@@ -67,7 +67,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-	<footer>
+		<script src = "{{url_for('view_bucket_list')}}"></script>
+		<footer>
 	  <div class = "col-xs-8 col-md-8 col-sm-8"></div>
 	  <div class = "col-xs-4 col-md-4 col-sm-4">
 	    <p><strong>by Crispus Kamau copyright @ 2017</strong> </p>
@@ -75,5 +76,5 @@
 	</footer>
   </body>
  
-  
+
 </html>
