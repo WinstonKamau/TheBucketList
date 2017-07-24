@@ -40,14 +40,14 @@
 	      <img src = "{{ url_for ( 'static' , filename = 'designs/glenn-carstens-peters-190592.jpg' ) }}" class = "img-rounded img-responsive" alt = "unloaded pic"   >
 		</div>
 		<div class = "col-xs-6 col-md-6 col-sm-6" id = "second_row_second_column">
-		  <form class = "form-group" >
+		  <form class = "form-group" action = "" method = "POST">
 			<h3><span class = "label label-info">Create a new account</span></h3>
-			<input type = "text" placeholder = "UserName / Email"  class = "form-control">
+			{{form.username.label}} {{form.username(size=20)}}
 			<hr class = "inner_hr">
-			<input type = "password" placeholder = "New Password"  class = "form-control">
+			{{form.password.label}}
             <hr class = "inner_hr">
-            <input type = "password" placeholder = "Confirm New Password"  class = "form-control">
-			<hr class = "inner_hr">
+			{{form.password_confirm.label}}
+						<hr class = "inner_hr">
 			<input type = "submit" id = "submit_button" class = "btn btn-default" value = "Submit" > 
 			<div class = "clearfix "></div>
 		  </form>
