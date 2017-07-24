@@ -4,9 +4,13 @@
 from flask import render_template, request
 from app import app
 from app.user import Users
+from flask.ext.login import LoginManager
+ 
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 #binding login function to the url /
-@app.route('/')
+@app.route('/', methods = ['GET', 'POST'])
 def login():
     '''a method that returns the route of login in the html'''
     return render_template("Login.html")
