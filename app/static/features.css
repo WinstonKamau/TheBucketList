@@ -35,5 +35,5 @@ tr { border-bottom: 1px solid #ddd }
 .laCol-2 { width : 50% }
 .laCol-3 { width: 20% }
 #save_button2 { float: center } 
-#email-username-addon-tag {float:right}
-#user-password {float:right}
+#email-username-addon-tag {float:center}
+#user-password {float:center}

@@ -18,11 +18,10 @@ class Users(object):
             self.user_password = None
     def login_user (self, user_email, password):
         '''a method for login in a user and ensuring that the user name and password is not blank'''
-        for users in self.users:
-            if users.user_email == user_email:
-                if users.user_password == password:
+        for member in self.users:
+            if member.user_email == user_email:
+                if member.user_password == password:
                     return True
-            return "invalid credentials."
 
     def log_out_user (self):
         '''a method for logging out the user'''

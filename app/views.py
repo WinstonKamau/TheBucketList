@@ -13,7 +13,7 @@ def login():
     if request.method =="POST":
         user_email = request.form['user_email_login']
         user_password = request.form['password_login']
-        if Users().login_user(user_email, user_password):
+        if Users().login_user(user_email, user_password) ==True :
             return redirect(url_for('view_bucket_list'))
         else:
             error = "Invalid email / password"
@@ -41,7 +41,7 @@ def add_activities():
     '''a method that returns the route of addactivities in the html'''
     return render_template("AddActivities.html")
 #binding view_bucket_list function to the url /ViewBucketList
-@app.route('/ViewBucketList', methods = ['POST'])
+@app.route('/ViewBucketList', methods = ['GET', 'POST' ,"DELETE"])
 def view_bucket_list():
     '''a method that returns the route of viewbucketlist in the html'''
     return render_template("ViewBucketList.html")
