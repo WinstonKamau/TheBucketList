@@ -33,31 +33,24 @@
 	</div>
 	<hr id = "myBucketList_second_line">
 	<button type = "button" class = "btn btn-default" id = "share-button" >Share</button>
-	<button type = "button" class = "btn btn-default" id = "create_new_list_item_button"> Create New BucketList</button>
-    <div><p></p></div>
-	<table class = "table" >
-	  <tr id = "title_row">
-		<th>
-		BucketList
-    </th>
-	  </tr>
-	  <tr>
-		<td >
-        TravelBucketList
-		</td>
-
-	  </tr>
-	  <tr>
-		<td >
-		Family BucketList
-		</td>
-	  </tr>
-	  <tr>
-		<td >
-		Adventure BucketList
-		</td>
-	  </tr>
+	<form action="/CreateBucketList" method = ['POST']>
+	<button type = "submit" class = "btn btn-default" id = "create_new_list_item_button" value = "Submit"> Create New BucketList</button>
+	</form>
+	<div><p></p></div>
+	<table class = "table">
+		<tr id = "title_row">
+			<th>
+			BucketList
+			</th>
+		</tr>
 	</table>
+	<ul>
+		<table class = "table">
+		{% for item in bucket_items %}
+		<tr><td>{{ item.bucket_name }}</td></tr>
+		{% endfor %}
+		</table>
+	</ul>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

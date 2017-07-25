@@ -32,3 +32,16 @@ class Users(object):
             user = Users(user_name, user_email, password)
             self.users.append(user)
             return True
+class BucketList(object):
+    '''a class for the bucketlist'''
+    bucket_list = []
+    def __init__(self, bucket_name=None):
+        if bucket_name:
+            self.bucket_name = bucket_name
+        else:
+            self.bucket_name = None
+    def create_bucket(self, bucket_name):
+        bucket = BucketList ( bucket_name )
+        self.bucket_list.append(bucket)
+    def view_bucket(self):
+        return self.bucket_list

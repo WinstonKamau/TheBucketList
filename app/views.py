@@ -4,6 +4,7 @@
 from flask import render_template, request, redirect, url_for
 from app import app
 from app.user import Users
+from app.user import BucketList
 
 #binding login function to the url /
 @app.route('/', methods = ['GET', 'POST'])
@@ -31,9 +32,13 @@ def register():
             return redirect(url_for('login'))
     return render_template("Register.html")
 #binding create_bucket_list function to the url /CreateBucketList
-@app.route('/CreateBucketList', methods = [ 'POST'])
+@app.route('/CreateBucketList', methods = ['GET', 'POST'])
 def create_bucket_list():
     '''a method that returns the route of createbucketlist in the html'''
+    if request.method == "POST":
+        bucket_name = request.form['bucketlistcreated']
+        BucketList().create_bucket(bucket_name)
+        return redirect(url_for('view_bucket_list')) 
     return render_template("CreateBucketList.html")
 #binding add_Activities function to the url /AddActivities
 @app.route('/AddActivities')
@@ -44,7 +49,11 @@ def add_activities():
 @app.route('/ViewBucketList', methods = ['GET', 'POST' ,"DELETE"])
 def view_bucket_list():
     '''a method that returns the route of viewbucketlist in the html'''
-    return render_template("ViewBucketList.html")
+    if request.method == "POST":
+        return redirect (url_for('create_bucket_list'))
+    else:
+        bucket_items = BucketList().bucket_list
+        return render_template("ViewBucketList.html", bucket_items=bucket_items)
 #binding view_activities function to the url /ViewActivities
 @app.route('/ViewActivities')
 def view_activities():
