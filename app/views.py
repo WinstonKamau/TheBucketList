@@ -54,11 +54,6 @@ def delete_bucket_list(index=None):
         return redirect(url_for('view_bucket_list'))
     bucket_item_chosen = BucketList().bucket_list[int(index)].bucket_name
     return render_template("DeleteBucketList.html", bucket_item_chosen=bucket_item_chosen )
-#binding add_Activities function to the url /AddActivities
-@app.route('/AddActivities', methods = ['POST'])
-def add_activities():
-    '''a method that returns the route of addactivities in the html'''
-    return render_template("AddActivities.html")
 #binding view_bucket_list function to the url /ViewBucketList
 @app.route('/ViewBucketList', methods = ['GET', 'POST' ])
 def view_bucket_list():
@@ -72,7 +67,38 @@ def view_bucket_list():
 @app.route('/ViewActivities/<index>')
 def view_activities(index):
     '''a method that returns the route of viewactivities in the html'''
-    if request.method == "POST":
-        return redirect (url_for('add_activities'))
     activity_items = BucketList().bucket_list[int(index)].activity_list
-    return render_template("ViewActivities.html", activity_items=activity_items)
+    spacer = "x"
+    return render_template("ViewActivities.html", activity_items=activity_items, index=index, spacer=spacer)
+#binding add_Activities function to the url /AddActivities
+@app.route('/AddActivities/<bucket_index>', methods = ['GET', 'POST'])
+def add_activities(bucket_index):
+    '''a method that returns the route of addactivities in the html'''
+    if request.method == "POST":
+        activity = request.form['theActivity']
+        BucketList().create_activity(int(bucket_index), activity)
+        return redirect('/ViewActivities/'+bucket_index)
+    return render_template("AddActivities.html")
+#binding add_Activities function to the url /AddActivities
+@app.route('/EditActivity/<indices>', methods = ['GET', 'POST'])
+def edit_activities(indices):
+    '''a method that returns the route of addactivities in the html'''
+    if request.method == "POST":
+        new_activity = request.form['new_activity']
+        bucket_index = indices.split("x")[0]
+        activity_index = indices.split("x")[1]
+        BucketList().edit_activity(int(bucket_index), int(activity_index), new_activity)
+        return redirect('/ViewActivities/'+bucket_index)
+    return render_template("EditActivity.html")
+@app.route('/DeleteActivity/<indices>', methods = ['GET','POST'])
+def delete_activities(indices):
+    '''a method that deletes an activity'''
+    bucket_index = indices.split("x")[0]
+    activity_index = indices.split("x")[1]
+    if request.method == "POST":
+        BucketList().delete_activity(int(bucket_index), int(activity_index))
+        return redirect('/ViewActivities/'+bucket_index)
+    activity_item_chosen = BucketList().bucket_list[int(bucket_index)].activity_list[int(activity_index)]
+    return render_template("DeleteBucketList.html", activity_item_chosen=activity_item_chosen )
+
+

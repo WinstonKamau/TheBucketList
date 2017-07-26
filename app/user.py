@@ -38,8 +38,10 @@ class BucketList(object):
     def __init__(self, bucket_name=None):
         if bucket_name:
             self.bucket_name = bucket_name
+            self.activity_list = []
         else:
             self.bucket_name = None
+            self.activity_list = []
     def create_bucket(self, bucket_name):
         bucket = BucketList ( bucket_name )
         self.bucket_list.append(bucket)
@@ -49,3 +51,9 @@ class BucketList(object):
         self.bucket_list[the_index].bucket_name = new_name
     def delete_bucket(self, the_index):
         self.bucket_list.pop(the_index)
+    def create_activity(self, the_index, new_activity):
+        self.bucket_list[the_index].activity_list.append(new_activity)
+    def edit_activity(self, the_index, index_of_activity, edited_activity):
+        self.bucket_list[the_index].activity_list[index_of_activity] = edited_activity
+    def delete_activity(self, the_index, index_of_activity):
+        self.bucket_list[the_index].activity_list.pop(the_index)
