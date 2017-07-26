@@ -32,30 +32,20 @@
 		</ul>
 	</div>
 	<hr id = "myBucketList_second_line">
-	<button type = "button" class = "btn btn-default" id = "create_new_list_item_button"> Create New List Item</button>
-    <div><p></p></div>
-	<table class = "table" >
-	  <tr id = "title_row">
-		<th>
-		Activity
-		</th>
-	  </tr>
-	  <tr>
-		<td >
-		Sky diving
-		</td>
-	  </tr>
-	  <tr>
-		<td >
-		Bungee Jumping
-		</td>
-	  </tr>
-	  <tr>
-		<td >
-		SpartanRace
-		</td>
-	  </tr>
+	<form method = "POST">
+		<button type = "submit" class = "btn btn-default" id = "create_new_list_item_button"> Create New List Item</button>
+	</form>
+	<div><p></p></div>
+	<table class = "table">
+		<tr id = "title_row">
+			<th>
+			Activities
+			</th>
+		</tr>
 	</table>
+	<ul>
+		<li>{{activity_items}}<li>
+	</ul>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

@@ -45,3 +45,7 @@ class BucketList(object):
         self.bucket_list.append(bucket)
     def view_bucket(self):
         return self.bucket_list
+    def edit_bucket(self, the_index, new_name):
+        self.bucket_list[the_index].bucket_name = new_name
+    def delete_bucket(self, the_index):
+        self.bucket_list.pop(the_index)

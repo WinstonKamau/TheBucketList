@@ -45,7 +45,7 @@
 	<ul>
 		<table class = "table">
 		{% for item in bucket_items %}
-		<tr><td>{{ item.bucket_name }}</td><td><button data-toggle="modal" data-target = "#editModal"class="btn btn-default" type="button"><span class = "glyphicon glyphicon-pencil" aria-hidden="true" ></span></button></td><td><button  class="btn btn-default" type="button"><span class = "glyphicon glyphicon-remove" aria-hidden="true"></span></button></tr>
+		<tr><td>{{ item.bucket_name }}</td><td><a href = "/ViewActivities/{{loop.index0}}"><span class = "glyphicon glyphicon-list" aria-hidden="true" ></span></a></td><td><a href = "/EditBucketList/{{loop.index0}}"><span class = "glyphicon glyphicon-pencil" aria-hidden="true" ></span></a></td><td><a href="/DeleteBucketList/{{loop.index0}}"><span class = "glyphicon glyphicon-remove" aria-hidden="true"></span></a></tr>
 		{% endfor %}
 		</table>
 	</ul>
@@ -58,7 +58,13 @@
         <h4 class="modal-title">Edit BucketList</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+        <form class = "form-group" method = "PUT">
+					<p>
+						<label>Bucket List Name</label>
+						<input type = "text" >
+						<input type = "submit" id = "submit_button" class = "btn btn-default" value = "Submit" > 
+					</p>
+				</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -6,19 +6,6 @@ from app import app
 from app.user import Users
 from app.user import BucketList
 
-#binding login function to the url /
-@app.route('/', methods = ['GET', 'POST'])
-def login():
-    '''a method that returns the route of login in the html'''
-    error = None
-    if request.method =="POST":
-        user_email = request.form['user_email_login']
-        user_password = request.form['password_login']
-        if Users().login_user(user_email, user_password) ==True :
-            return redirect(url_for('view_bucket_list'))
-        else:
-            error = "Invalid email / password"
-    return render_template("Login.html" , error = error)
 #binding register function to the url /Register
 @app.route('/Register', methods = ['GET', 'POST'])
 def register():
@@ -32,6 +19,19 @@ def register():
             return redirect(url_for('login'))
     return render_template("Register.html")
 #binding create_bucket_list function to the url /CreateBucketList
+#binding login function to the url /
+@app.route('/', methods = ['GET', 'POST'])
+def login():
+    '''a method that returns the route of login in the html'''
+    error = None
+    if request.method =="POST":
+        user_email = request.form['user_email_login']
+        user_password = request.form['password_login']
+        if Users().login_user(user_email, user_password) ==True :
+            return redirect(url_for('view_bucket_list'))
+        else:
+            error = "Invalid email / password"
+    return render_template("Login.html" , error = error)
 @app.route('/CreateBucketList', methods = ['GET', 'POST'])
 def create_bucket_list():
     '''a method that returns the route of createbucketlist in the html'''
@@ -40,13 +40,27 @@ def create_bucket_list():
         BucketList().create_bucket(bucket_name)
         return redirect(url_for('view_bucket_list')) 
     return render_template("CreateBucketList.html")
+@app.route('/EditBucketList/<index>', methods = ['GET', 'POST'])
+def edit_bucket_list(index=None):
+    if request.method == "POST":
+        new_name = request.form['new_name']
+        BucketList().edit_bucket( int(index), new_name)
+        return redirect(url_for('view_bucket_list'))
+    return render_template("EditBucketList.html")
+@app.route('/DeleteBucketList/<index>', methods = ['GET', 'POST'])
+def delete_bucket_list(index=None):
+    if request.method == "POST":
+        BucketList().delete_bucket(int(index))
+        return redirect(url_for('view_bucket_list'))
+    bucket_item_chosen = BucketList().bucket_list[int(index)].bucket_name
+    return render_template("DeleteBucketList.html", bucket_item_chosen=bucket_item_chosen )
 #binding add_Activities function to the url /AddActivities
-@app.route('/AddActivities')
+@app.route('/AddActivities', methods = ['POST'])
 def add_activities():
     '''a method that returns the route of addactivities in the html'''
     return render_template("AddActivities.html")
 #binding view_bucket_list function to the url /ViewBucketList
-@app.route('/ViewBucketList', methods = ['GET', 'POST' ,"DELETE"])
+@app.route('/ViewBucketList', methods = ['GET', 'POST' ])
 def view_bucket_list():
     '''a method that returns the route of viewbucketlist in the html'''
     if request.method == "POST":
@@ -55,7 +69,10 @@ def view_bucket_list():
         bucket_items = BucketList().bucket_list
         return render_template("ViewBucketList.html", bucket_items=bucket_items)
 #binding view_activities function to the url /ViewActivities
-@app.route('/ViewActivities')
-def view_activities():
+@app.route('/ViewActivities/<index>')
+def view_activities(index):
     '''a method that returns the route of viewactivities in the html'''
-    return render_template("ViewActivities.html")
+    if request.method == "POST":
+        return redirect (url_for('add_activities'))
+    activity_items = BucketList().bucket_list[int(index)].activity_list
+    return render_template("ViewActivities.html", activity_items=activity_items)
