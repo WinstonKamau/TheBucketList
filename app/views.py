@@ -23,15 +23,15 @@ def register():
 @app.route('/', methods = ['GET', 'POST'])
 def login():
     '''a method that returns the route of login in the html'''
-    error = None
+    error = ""
     if request.method =="POST":
         user_email = request.form['user_email_login']
         user_password = request.form['password_login']
-        if Users().login_user(user_email, user_password) ==True :
+        if Users().login_user(user_email, user_password):
             return redirect(url_for('view_bucket_list'))
         else:
             error = "Invalid email / password"
-    return render_template("Login.html" , error = error)
+    return render_template("Login.html" , error=error)
 @app.route('/CreateBucketList', methods = ['GET', 'POST'])
 def create_bucket_list():
     '''a method that returns the route of createbucketlist in the html'''
