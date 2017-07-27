@@ -20,6 +20,10 @@ class Users(object):
             if member.user_email == user_email:
                 if member.user_password == password:
                     return True
+                else:
+                    return False
+            else:
+                return False
     def log_out_user (self):
         '''a method for logging out the user'''
         self.users = []
@@ -29,6 +33,8 @@ class Users(object):
             user = Users(user_name, user_email, password)
             self.users.append(user)
             return True
+        else:
+            return False
 class BucketList(object):
     '''a class for the bucketlist'''
     bucket_list = []
@@ -44,6 +50,9 @@ class BucketList(object):
         if bucket_name != "":
             bucket = BucketList ( bucket_name )
             self.bucket_list.append(bucket)
+            return True
+        else:
+            return False 
     def view_bucket(self):
         ''' a method to return a view for a bucket'''
         return self.bucket_list
@@ -51,6 +60,9 @@ class BucketList(object):
         ''' a method to edit a bucket object its bucket name'''
         if new_name != "":
             self.bucket_list[the_index].bucket_name = new_name
+            return True
+        else:
+            return False
     def delete_bucket(self, the_index):
         ''' a method to remove a bucket object'''
         self.bucket_list.pop(the_index)
@@ -58,6 +70,9 @@ class BucketList(object):
         '''a method to create an activity '''
         if new_activity != "":
             self.bucket_list[the_index].activity_list.append(new_activity)
+            return True
+        else:
+            return False
     def edit_activity(self, the_index, index_of_activity, edited_activity):
         ''' a method to edit an activity'''
         if edited_activity != "":

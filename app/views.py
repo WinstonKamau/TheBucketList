@@ -10,6 +10,7 @@ from app.models import BucketList
 @app.route('/Register', methods = ['GET', 'POST'])
 def register():
     '''a method that returns the route of register in the html'''  
+    error = ""
     if request.method == "POST":
         user_name = request.form['username_register']
         user_email = request.form['useremail_register']
@@ -17,7 +18,9 @@ def register():
         new_password = request.form['confirm_new_password']
         if Users().create_user(user_name, user_email, password , new_password):
             return redirect(url_for('login'))
-    return render_template("Register.html")
+        else:
+            error = "Ensure that all fields have been inserted and that the passwords are the same"
+    return render_template("Register.html", error=error)
 #binding create_bucket_list function to the url /CreateBucketList
 #binding login function to the url /
 @app.route('/', methods = ['GET', 'POST'])
@@ -35,18 +38,24 @@ def login():
 @app.route('/CreateBucketList', methods = ['GET', 'POST'])
 def create_bucket_list():
     '''a method that returns the route of createbucketlist in the html'''
+    error = ""
     if request.method == "POST":
         bucket_name = request.form['bucketlistcreated']
-        BucketList().create_bucket(bucket_name)
-        return redirect(url_for('view_bucket_list')) 
-    return render_template("CreateBucketList.html")
+        if BucketList().create_bucket(bucket_name):
+            return redirect(url_for('view_bucket_list'))
+        else: 
+            error = "You cannot insert an empty bucket name!"
+    return render_template("CreateBucketList.html", error=error)
 @app.route('/EditBucketList/<index>', methods = ['GET', 'POST'])
 def edit_bucket_list(index=None):
+    error = ""
     if request.method == "POST":
         new_name = request.form['new_name']
-        BucketList().edit_bucket( int(index), new_name)
-        return redirect(url_for('view_bucket_list'))
-    return render_template("EditBucketList.html")
+        if BucketList().edit_bucket( int(index), new_name):
+            return redirect(url_for('view_bucket_list'))
+        else:
+            error = "You cannot replace the bucket name with an empty string!"
+    return render_template("EditBucketList.html", error=error)
 @app.route('/DeleteBucketList/<index>', methods = ['GET', 'POST'])
 def delete_bucket_list(index=None):
     if request.method == "POST":
@@ -74,11 +83,14 @@ def view_activities(index):
 @app.route('/AddActivities/<bucket_index>', methods = ['GET', 'POST'])
 def add_activities(bucket_index):
     '''a method that returns the route of addactivities in the html'''
+    error = ""
     if request.method == "POST":
         activity = request.form['theActivity']
-        BucketList().create_activity(int(bucket_index), activity)
-        return redirect('/ViewActivities/'+bucket_index)
-    return render_template("AddActivities.html")
+        if BucketList().create_activity(int(bucket_index), activity):
+            return redirect('/ViewActivities/'+bucket_index)
+        else:
+            error = "You cannot insert an acitivity with an empty string"
+    return render_template("AddActivities.html", error=error)
 #binding add_Activities function to the url /AddActivities
 @app.route('/EditActivity/<indices>', methods = ['GET', 'POST'])
 def edit_activities(indices):
