@@ -1,18 +1,18 @@
-'''A test file for testing the bucket_activities.py file'''
+'''A test file for testing the BucketList class in models.py file'''
 import unittest
-#Importing the class BucketActivities from the file bucket_activities.py for testing
-from app.bucket_activities import BucketActivities
+#Importing the class BucketList from the file models.py for testing
+from app.models import BucketList
 
 class BucketActivitiesTestCase(unittest.TestCase):
     '''A class that tests the crud for creating updating reading
-    and deleting bucket lists and activities'''
+    and deleting bucket lists '''
     def setUp(self):
-        '''creating an object from the bucket_activities.py file'''
-        self.bucket = BucketActivities()
-    def test_create_bucket(self):
-        '''Testing that the create bucket does create a bucket list'''
+        '''creating an object from the models.py file'''
+        self.bucket = BucketList()
+    def test_create_bucket_happy_path(self):
+        '''Testing that the create bucket does create a bucket list object'''
         self.bucket.create_bucket("Family")
-        self.assertEqual(self.bucket.list_items.__contains__("Family"), True)
+        self.assertEqual(self.bucket.bucket_list[0].bucket_name, "Family")
     def test_create_bucket_1(self):
         '''Testing that the create bucket does not create a bucket list if argument is an empty string'''
         self.bucket.create_bucket("")

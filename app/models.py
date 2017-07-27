@@ -20,13 +20,12 @@ class Users(object):
             if member.user_email == user_email:
                 if member.user_password == password:
                     return True
-
     def log_out_user (self):
         '''a method for logging out the user'''
         self.test = "user logged out"
     def create_user(self, user_name, user_email, password, password_confirm):
         '''a method for creating a user'''
-        if (user_name != "" and password != "" and isinstance( user_name , str )and password == password_confirm):
+        if user_name != "" and user_email != "" and password != "" and password == password_confirm:
             user = Users(user_name, user_email, password)
             self.users.append(user)
             return True
