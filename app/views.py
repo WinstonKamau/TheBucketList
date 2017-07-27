@@ -3,8 +3,8 @@
 #importing the object render_template form flask for returning templates
 from flask import render_template, request, redirect, url_for
 from app import app
-from app.user import Users
-from app.user import BucketList
+from app.models import Users
+from app.models import BucketList
 
 #binding register function to the url /Register
 @app.route('/Register', methods = ['GET', 'POST'])
