@@ -77,6 +77,9 @@ class BucketList(object):
         ''' a method to edit an activity'''
         if edited_activity != "":
             self.bucket_list[the_index].activity_list[index_of_activity] = edited_activity
+            return True
+        else:
+            return False
     def delete_activity(self, the_index, index_of_activity):
         ''' a method to delet an activity'''
         self.bucket_list[the_index].activity_list.pop(index_of_activity)
