@@ -56,4 +56,4 @@ class BucketList(object):
     def edit_activity(self, the_index, index_of_activity, edited_activity):
         self.bucket_list[the_index].activity_list[index_of_activity] = edited_activity
     def delete_activity(self, the_index, index_of_activity):
-        self.bucket_list[the_index].activity_list.pop(the_index)
+        self.bucket_list[the_index].activity_list.pop(index_of_activity)
