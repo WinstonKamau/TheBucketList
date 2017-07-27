@@ -32,10 +32,7 @@ class LoginTestCase(unittest.TestCase):
         print("The password entered "+self.user.users[0].user_password)
         boolean_for_login_user = self.user.login_user("user1@gmail.com", "password2")
         self.assertEqual(boolean_for_login_user, None)
-    def test_log_out_user(self):
-        '''a method to test that the log out user function worked'''
-        self.user.log_out_user()
-        self.assertEqual(self.user.test, "user logged out")
+
     
 if __name__ == '__main__':
     unittest.main()

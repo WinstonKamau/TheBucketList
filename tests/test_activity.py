@@ -24,10 +24,8 @@ class ActivitiesTestCase(unittest.TestCase):
         self.assertEqual(BucketList().bucket_list[0].activity_list[0], "Buy Gifts")
     def test_edit_activity_sad_path(self):
         '''Testing that edit activity does not edit the activity if the activity is an empty string'''
-        BucketList().create_bucket("Family")
-        BucketList().create_activity(0, "Visit")
         BucketList().edit_activity(0 ,0 ,"")
-        self.assertEqual(BucketList().bucket_list[0].activity_list[0], "")
+        self.assertEqual(BucketList().bucket_list[0].activity_list[0], "Buy Gifts")
     def test_delete_activity_happy_path(self):
         '''Testing that the delet activity deletes an activity object'''
         BucketList().delete_activity(0 , 0 )

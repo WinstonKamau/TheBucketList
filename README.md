@@ -1,2 +1,10 @@
 # The Bucket-List
-An application that allows users to record and share things they want to achieve or experience before reaching a certain age meeting the needs of keeping track of their needs and goals. Login.html is used to log in a user to his account. Register.html is used to register a user to the bucket list. ViewBucketList.html allows the user to view the bucket list. CreateBucketList creates a new bucket list. View Activity.html lets the user view activities on the bucket list. AddActivity.html lets the user add an activity to a bucket list.  The jpg image is a download from unsplash claiming to be a free photo selling website and is only being used for demonstration. The following website requires Flask installed for it to run.
+An application that allows users to record and view things they want to achieve or experience before reaching a certain age meeting the needs of keeping track of their needs and goals. 
+
+Features.
+The app allows a user ability to register using a username, email and password.
+The app allows a user to login after registering with his credentials.
+The app allows a user to create, view, edit and delete his bucket list.
+The app allows a user to create, view, edit and delele activities within a chosen bucket list.
+The app allows a user to logout
+
