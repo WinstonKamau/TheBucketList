@@ -1,10 +1,1 @@
-{
-  "test_bucket.py::BucketActivitiesTestCase::test_create_activity": true,
-  "test_bucket.py::BucketActivitiesTestCase::test_create_bucket_1": true,
-  "test_bucket.py::BucketActivitiesTestCase::test_create_bucket_happy_path": true,
-  "test_bucket.py::BucketActivitiesTestCase::test_delete_activity": true,
-  "test_bucket.py::BucketActivitiesTestCase::test_delete_bucket": true,
-  "test_bucket.py::BucketActivitiesTestCase::test_update_activity": true,
-  "test_bucket.py::BucketActivitiesTestCase::test_update_bucket": true,
-  "test_bucket.py::BucketActivitiesTestCase::test_update_bucket_1": true
-}
+{}

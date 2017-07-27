@@ -2,4 +2,4 @@
 from app import app
 #method to call the app to run
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

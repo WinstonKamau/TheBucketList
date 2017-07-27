@@ -99,6 +99,10 @@ def delete_activities(indices):
         BucketList().delete_activity(int(bucket_index), int(activity_index))
         return redirect('/ViewActivities/'+bucket_index)
     activity_item_chosen = BucketList().bucket_list[int(bucket_index)].activity_list[int(activity_index)]
-    return render_template("DeleteBucketList.html", activity_item_chosen=activity_item_chosen )
-
+    return render_template("DeleteActivity.html", activity_item_chosen=activity_item_chosen )
+@app.route('/Logout')
+def log_out():
+    '''a method that logs out the user'''
+    Users().log_out_user()
+    return redirect('/Register')
 
