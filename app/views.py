@@ -120,6 +120,5 @@ def delete_activities(indices):
 @app.route('/Logout')
 def log_out():
     '''a method that logs out the user'''
-    Users().log_out_user()
-    return redirect('/Register')
+    return redirect('/')
 
