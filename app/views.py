@@ -60,6 +60,7 @@ def edit_bucket_list(index=None):
     return render_template("EditBucketList.html", error=error, bucket_items=bucket_items, index_integer = index_integer)
 @app.route('/DeleteBucketList/<index>', methods = ['GET', 'POST'])
 def delete_bucket_list(index=None):
+    '''a method that redirects to view and deletes buckets in the bucketlist'''
     if request.method == "POST":
         BucketList().delete_bucket(int(index))
         return redirect(url_for('view_bucket_list'))
