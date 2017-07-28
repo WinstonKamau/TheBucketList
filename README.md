@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/WinstonKamau/TheBucketList.svg?branch=master)](https://travis-ci.org/WinstonKamau/TheBucketList)
 # The Bucket-List
 An application that allows users to record and view things they want to achieve or experience before reaching a certain age meeting the needs of keeping track of their needs and goals. 
 
