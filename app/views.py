@@ -19,7 +19,7 @@ def register():
         if Users().create_user(user_name, user_email, password , new_password):
             return redirect(url_for('login'))
         else:
-            error = "Ensure that all fields have been inserted and that the passwords are the same"
+            error = "Ensure that all fields have been inserted and that the passwords are the same!"
     return render_template("Register.html", error=error)
 #binding create_bucket_list function to the url /CreateBucketList
 #binding login function to the url /
@@ -33,7 +33,7 @@ def login():
         if Users().login_user(user_email, user_password):
             return redirect(url_for('view_bucket_list'))
         else:
-            error = "Invalid email / password"
+            error = "Invalid email / password!"
     return render_template("Login.html" , error=error)
 @app.route('/CreateBucketList', methods = ['GET', 'POST'])
 def create_bucket_list():
@@ -55,7 +55,9 @@ def edit_bucket_list(index=None):
             return redirect(url_for('view_bucket_list'))
         else:
             error = "You cannot replace the bucket name with an empty string!"
-    return render_template("EditBucketList.html", error=error)
+    bucket_items = BucketList().bucket_list
+    index_integer = int(index)
+    return render_template("EditBucketList.html", error=error, bucket_items=bucket_items, index_integer = index_integer)
 @app.route('/DeleteBucketList/<index>', methods = ['GET', 'POST'])
 def delete_bucket_list(index=None):
     if request.method == "POST":
@@ -98,15 +100,16 @@ def add_activities(bucket_index):
 def edit_activities(indices):
     '''a method that returns the route of addactivities in the html'''
     error = ""
+    bucket_index = indices.split("x")[0]
+    activity_index = indices.split("x")[1]
     if request.method == "POST":
         new_activity = request.form['new_activity']
-        bucket_index = indices.split("x")[0]
-        activity_index = indices.split("x")[1]
         if BucketList().edit_activity(int(bucket_index), int(activity_index), new_activity):
             return redirect('/ViewActivities/'+bucket_index)
         else:
             error ="You cannot replace activity name with an empty string"
-    return render_template("EditActivity.html", error=error)
+    the_activity= BucketList().bucket_list[int(bucket_index)].activity_list[int(activity_index)]
+    return render_template("EditActivity.html", error=error, the_activity=the_activity )
 @app.route('/DeleteActivity/<indices>', methods = ['GET','POST'])
 def delete_activities(indices):
     '''a method that deletes an activity'''
@@ -120,5 +123,7 @@ def delete_activities(indices):
 @app.route('/Logout')
 def log_out():
     '''a method that logs out the user'''
+    Users().users.clear()
+    BucketList().bucket_list.clear()
     return redirect('/')
 
