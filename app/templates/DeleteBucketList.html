@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Create BucketList :: CreatePage</title>
+    <title>Delete BucketList :: CreatePage</title>
 
     <!-- Bootstrap -->
     <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -19,23 +19,25 @@
   </head>
   <body>
 	<div class = "col-sm-3 col-xs-3 col-md-3">
-	</div>
+  </div>
 	<div class = "col-sm-9 col-xs-9 col-md-9">
-	  <h3 id = "create_item" >Create Activity</h3>
+	  <h3 id = "create_item" >Delete BucketList</h3>
 	</div>
 	<div class = "col-sm-3 col-xs-3 col-md-3">
+  </div>
+  <div class = "col-sm-8 col-xs-8 col-md-8">
+  <h3>Are you sure you want to delete the item below?</h3>
+  </div>
+	<div class = "col-sm-4 col-xs-4 col-md-4">
 	</div>
-	<h4>Details</h4>
 	<table class = "table" >
     <form class = "form-group" method = "POST">
 	  <tr>
-		  <td class = "column1" ><label class = "labels">Activity Name</label></td>
-		  <td class = "column2" ><input name = "theActivity" type = "text" placeholder = "Activity name" class = "form-control" ></td>
-      <td><button type = "submit" class = "btn btn-primary" id = "save_button" value = "Submit" >Save</button></td>
+		  <td class = "column1" ><label class = "labels">{{ bucket_item_chosen }}</label></td>
+      <td><button type = "submit" class = "btn btn-danger" id = "save_button" value = "Submit" >Delete</button></td>
     </tr>
 	  </form>
-  </table>
-  <h3>{{error}}</h3>
+	</table>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

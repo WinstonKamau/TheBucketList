@@ -1,7 +1,7 @@
 #first_row { background-color : #98D378 ; }
 #second_row { height : max-height }
 #first_column { color:white;  font-size : 50px ; font-family: "Lato" , "Open Sans" , serif; }
-#log_in_button , #submit_button , #create_new_list_item_button { float: right; background-color : #558160 ; font-style: bold; }
+#log_in_button, #submit_button { float: right; background-color : #558160 ; font-style: bold; }
 #second_row_second_column { background-color : #D1DCD3; } 
 .theClass { display: inline ; font-family: "Lato" , "Open Sans" , serif ; font-size:50px ; font-style : italic; color : white ; background-color : #98D378 ;}
 .inner_hr { 
@@ -11,6 +11,7 @@
     margin-left: auto;
     margin-right: auto;
     border-width: 1px;}
+#create_new_list_item_button { float: right; font-style: bold; }
 #main_body { background-color : #839D79 ; height: 100% ;}
 .outer_hr { display: block;
     margin-top: 0.2em;
@@ -35,3 +36,5 @@ tr { border-bottom: 1px solid #ddd }
 .laCol-2 { width : 50% }
 .laCol-3 { width: 20% }
 #save_button2 { float: center } 
+#email-username-addon-tag {float:center}
+#user-password {float:center}

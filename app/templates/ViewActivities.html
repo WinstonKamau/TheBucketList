@@ -26,39 +26,39 @@
 	  <span class = "glyphicon glyphicon-menu-hamburger" aria-hidden = "true"></span>
 	  </button>
 		<ul class="dropdown-menu" aria-labelledby= "list_glyphicon_homePage">
-		  <li><a href="ViewBucketList.html">ViewBucketList</a></li>
+		  <li><a href="/ViewBucketList">ViewBucketList</a></li>
 			<li role="separator" class="divider"></li>
-		  <li><a href="Register_Login.html">Log Out</a></li>
+		  <li><a href="/Logout">Log Out</a></li>
 		</ul>
 	</div>
 	<hr id = "myBucketList_second_line">
-	<button type = "button" class = "btn btn-default" id = "create_new_list_item_button"> Create New List Item</button>
-    <div><p></p></div>
-	<table class = "table" >
-	  <tr id = "title_row">
-		<th>
-		Activity
-		</th>
-	  </tr>
-	  <tr>
-		<td >
-		Sky diving
-		</td>
-	  </tr>
-	  <tr>
-		<td >
-		Bungee Jumping
-		</td>
-	  </tr>
-	  <tr>
-		<td >
-		SpartanRace
-		</td>
-	  </tr>
+  <div class = "col-xs-10 col-sm-10 col-md-10">
+	</div>
+	<div class = "col-xs-2 col-sm-2 col-md-2">
+		<a href = "/AddActivities/{{index}}"><span class = "btn btn-primary" aria-hidden="true" >Create New Activity</span></a>
+	</div>
+	<table class = "table">
+		<tr id = "title_row">
+			<th>
+			Activities
+			</th>
+		</tr>
 	</table>
+	<ul>
+		<table class = "table">
+		{% if activity_items|length > 0 %}
+			{% for item in activity_items %}
+			<tr><td>{{ item }}</td><td><a href = "/EditActivity/{{index}}{{spacer}}{{loop.index0}}"><span class = "glyphicon glyphicon-pencil" aria-hidden="true" ></span></a></td><td><a href="/DeleteActivity/{{index}}{{spacer}}{{loop.index0}}"><span class = "glyphicon glyphicon-trash" aria-hidden="true"></span></a></tr>
+			{% endfor %}
+		{% else%}
+			{{ prompt }}
+		{% endif %}
+		
+		</table>
+	</ul>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ url_for ( 'static' , filename = 'js/bootstrap.min.js' ) }}"></script>
   </body>
 </html>

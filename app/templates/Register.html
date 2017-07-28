@@ -40,24 +40,27 @@
 	      <img src = "{{ url_for ( 'static' , filename = 'designs/glenn-carstens-peters-190592.jpg' ) }}" class = "img-rounded img-responsive" alt = "unloaded pic"   >
 		</div>
 		<div class = "col-xs-6 col-md-6 col-sm-6" id = "second_row_second_column">
-		  <form class = "form-group" >
+		  <form class = "form-group" method = "POST" >
 			<h3><span class = "label label-info">Create a new account</span></h3>
-			<input type = "text" placeholder = "UserName / Email"  class = "form-control">
+			<input name = "username_register" type = "text" placeholder = "UserName"  class = "form-control">
 			<hr class = "inner_hr">
-			<input type = "password" placeholder = "New Password"  class = "form-control">
-            <hr class = "inner_hr">
-            <input type = "password" placeholder = "Confirm New Password"  class = "form-control">
+			<input name = "useremail_register" type = "email" placeholder = "Email"  class = "form-control">
 			<hr class = "inner_hr">
-			<input type = "submit" id = "submit_button" class = "btn btn-default" value = "Submit" > 
+			<input name = "password_register" type = "password" placeholder = "New Password"  class = "form-control">
+      <hr class = "inner_hr">
+      <input name = "confirm_new_password"type = "password" placeholder = "Confirm New Password"  class = "form-control">
+			<hr class = "inner_hr">
+			<input type = "submit" id = "submit_button" class = "btn btn-primary" value = "Submit" > 
 			<div class = "clearfix "></div>
-		  </form>
+			</form>
+			<em>{{error}}</em>
 		</div>
 	  </div>	
 	</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{ url_for ( 'static' , filename = 'js/bootstrap.min.js' ) }}"></script>
 	<footer>
 	  <div class = "col-xs-8 col-md-8 col-sm-8"></div>
 	  <div class = "col-xs-4 col-md-4 col-sm-4">

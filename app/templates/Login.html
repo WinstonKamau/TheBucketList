@@ -29,23 +29,23 @@
 		    </strong>
 		  </p>
 		</div>
-		<div class = "col-xs-3 col-md-3" > 
-	      <form class = "input-group-xs" >
-		    <label id = "email-username-addon-tag" >Email/UserName</label>
-		      <input type = "text" class = "form-control input-group-xs" placeholder = "UserName / Email" >
-					 <a>
-				  <em >
-				    Register Account    
-				  </em>
-				</a>
-				</form>
+		<div class = "col-xs-3 col-md-3" >
+				<label id = "email-username-addon-tag" >Email</label> 
+				<p></p>
+				<p></p>
+				<p></p>
+				<label for = "password_Input" id = "user-password" >Password</label>
+				<p><a href="/Register">Register Account</a></p>
 		</div>
 		<div class = "col-xs-3 col-md-3" > 
-		  <form class = "input-group-xs" >
-		    <label for = "password_Input" id = "user-password" >Password</label>
-		    <input type = "password" class = "form-control input-group-xs" id = "password_Input" placeholder = "Password">
-		    <input type = "submit" id = "log_in_button" class = "btn btn-default btn-sm" value = "Log in">
-		  </form>
+		  <form class = "input-group-xs" method = "post" action = "/" >
+				<d1>
+		    <input name = "user_email_login" type = "email" class = "form-control input-group-xs" id = "user_email"placeholder = "Email" >
+		    <input name = "password_login" type = "password" class = "form-control input-group-xs" id = "password_Input" placeholder = "Password">
+				<input type = "submit" id = "log_in_button" class = "btn btn-primary btn-sm" value = "Log in">
+				<em>{{error}}</em>
+				</d1>
+			</form>
 		</div>
 		<div class = "clearfix visible-xs-block ">
 		  </div>
@@ -64,14 +64,12 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-	<footer>
+    <script src="{{ url_for ( 'static' , filename = 'js/bootstrap.min.js' ) }}"></script>
+		<footer>
 	  <div class = "col-xs-8 col-md-8 col-sm-8"></div>
 	  <div class = "col-xs-4 col-md-4 col-sm-4">
 	    <p><strong>by Crispus Kamau copyright @ 2017</strong> </p>
 	  </div>
 	</footer>
   </body>
- 
-  
 </html>
