@@ -8,6 +8,7 @@ class BucketActivitiesTestCase(unittest.TestCase):
     and deleting bucket lists '''
     def test_create_bucket_happy_path(self):
         '''Testing that the create bucket does create a bucket list object'''
+        BucketList.bucket_list.clear()
         BucketList().create_bucket("Family")
         self.assertEqual(len(BucketList().bucket_list), 1)
     def test_create_bucket_happy_path_1(self):
@@ -19,6 +20,7 @@ class BucketActivitiesTestCase(unittest.TestCase):
         self.assertEqual(len(BucketList().bucket_list), 1)
     def test_edit_bucket_happy_path(self):
         '''Testing that the edit bucket does not edit a particulart bucket list object'''
+        BucketList().create_bucket("Family")
         BucketList().edit_bucket(0, "Travel")
         self.assertEqual(BucketList().bucket_list[0].bucket_name, "Travel")
     def test_edit_bucket_sad_path(self):
@@ -27,9 +29,10 @@ class BucketActivitiesTestCase(unittest.TestCase):
         self.assertEqual(BucketList().bucket_list[0].bucket_name, "Travel")
     def test_delete_bucket_happy_path(self):
         '''Testing that the delete bucket does work'''
+        BucketList.bucket_list.clear()
         BucketList().create_bucket("Adventure")
-        BucketList().delete_bucket(1)
-        self.assertEqual(len(BucketList().bucket_list), 1)
+        BucketList().delete_bucket(0)
+        self.assertEqual(len(BucketList().bucket_list), 0)
 
 if __name__ == '__main__':
     unittest.main()
