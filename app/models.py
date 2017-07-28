@@ -24,9 +24,6 @@ class Users(object):
                     return False
             else:
                 return False
-    def log_out_user (self):
-        '''a method for logging out the user'''
-        self.users = []
     def create_user(self, user_name, user_email, password, password_confirm):
         '''a method for creating a user'''
         if user_name != "" and user_email != "" and password != "" and password == password_confirm:
