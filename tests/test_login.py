@@ -9,6 +9,7 @@ class LoginTestCase(unittest.TestCase):
         self.user = Users()
     def test_login_entry_happy_path(self):
         '''a method to test that the login in works happy path'''
+        self.user.users.clear()
         self.user.create_user("user1", "user1@gmail.com", "password1", "password1")
         print("The default users ", self.user.users)
         print("The user entered ", self.user.users[0].user_name)
