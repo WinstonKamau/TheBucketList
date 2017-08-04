@@ -48,6 +48,7 @@ def create_bucket_list():
     return render_template("CreateBucketList.html", error=error)
 @app.route('/EditBucketList/<index>', methods = ['GET', 'POST'])
 def edit_bucket_list(index=None):
+    '''a method for editing the bucket list'''
     error = ""
     if request.method == "POST":
         new_name = request.form['new_name']
