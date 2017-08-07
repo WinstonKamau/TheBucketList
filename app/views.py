@@ -3,8 +3,8 @@
 #importing the object render_template form flask for returning templates
 from flask import render_template, request, redirect, url_for
 from app import app
-from app.model import Users
-from app.model import BucketList
+from app.models import Users
+from app.models import BucketList
 
 #binding register function to the url /Register
 @app.route('/Register', methods = ['GET', 'POST'])
@@ -16,8 +16,12 @@ def register():
         user_email = request.form['useremail_register']
         password = request.form['password_register']
         new_password = request.form['confirm_new_password']
-        if Users().create_user(user_name, user_email, password , new_password):
+        if Users().create_user(user_name, user_email, password , new_password) == "all values okay":
             return redirect(url_for('login'))
+        elif Users().create_user(user_name, user_email, password , new_password) == "similar email":
+            error = user_email+" is already registered"
+        elif Users().create_user(user_name, user_email, password , new_password) == "similar name":
+            error = user_name+" is already registered"
         else:
             error = "Ensure that all fields have been inserted and that the passwords are the same!"
     return render_template("Register.html", error=error)
@@ -43,8 +47,11 @@ def create_bucket_list():
         bucket_name = request.form['bucketlistcreated']
         if BucketList().create_bucket(bucket_name):
             return redirect(url_for('view_bucket_list'))
-        else: 
-            error = "You cannot insert an empty bucket name!"
+        else:
+            if bucket_name == "":
+                error = "Ensure that the bucket name is not an empty word!"
+            else:
+                error = "'"+bucket_name+"' already exists in the bucket list!" 
     return render_template("CreateBucketList.html", error=error)
 @app.route('/EditBucketList/<index>', methods = ['GET', 'POST'])
 def edit_bucket_list(index=None):
@@ -54,7 +61,10 @@ def edit_bucket_list(index=None):
         if BucketList().edit_bucket( int(index), new_name):
             return redirect(url_for('view_bucket_list'))
         else:
-            error = "You cannot replace the bucket name with an empty string!"
+            if new_name == "":
+                error = "Bucket cannot be replaced with an empty string!"
+            else:
+                error ="'"+new_name+"' already exists in the bucket list!"
     bucket_items = BucketList().view_bucket()
     index_integer = int(index)
     return render_template("EditBucketList.html", error=error, bucket_items=bucket_items, index_integer = index_integer)
@@ -93,7 +103,10 @@ def add_activities(bucket_index):
         if BucketList().create_activity(int(bucket_index), activity):
             return redirect('/ViewActivities/'+bucket_index)
         else:
-            error = "You cannot insert an acitivity with an empty string!"
+            if activity == "":
+                error = "Ensure that the activity inserted is not an empty string!"
+            else:
+                error = "'"+activity+"' already exists in the activity list!"
     return render_template("AddActivities.html", error=error)
 #binding add_Activities function to the url /AddActivities
 @app.route('/EditActivity/<indices>', methods = ['GET', 'POST'])
@@ -107,7 +120,10 @@ def edit_activities(indices):
         if BucketList().edit_activity(int(bucket_index), int(activity_index), new_activity):
             return redirect('/ViewActivities/'+bucket_index)
         else:
-            error ="You cannot replace activity name with an empty string"
+            if new_activity == "":
+                error = "An activity cannot be replaced with an empty string"
+            else:
+                error = "'"+new_activity+"' already exists in the activity list"
     the_activity= BucketList().view_bucket()[int(bucket_index)].activity_list[int(activity_index)]
     return render_template("EditActivity.html", error=error, the_activity=the_activity )
 @app.route('/DeleteActivity/<indices>', methods = ['GET','POST'])
