@@ -1,7 +1,6 @@
 #first_row { background-color : #98D378 ; }
-#second_row { height : max-height }
 #first_column { color:white;  font-size : 50px ; font-family: "Lato" , "Open Sans" , serif; }
-#log_in_button, #submit_button { float: right; background-color : #558160 ; font-style: bold; }
+#log_in_button, #submit_button, #exit_bucket, #exit_bucket_1, #exit_bucket_3, #exit_bucket_2, #exit_activity_2, #exit_activity{ float: right; background-color : #558160 ; }
 #second_row_second_column { background-color : #D1DCD3; } 
 .theClass { display: inline ; font-family: "Lato" , "Open Sans" , serif ; font-size:50px ; font-style : italic; color : white ; background-color : #98D378 ;}
 .inner_hr { 
@@ -11,7 +10,7 @@
     margin-left: auto;
     margin-right: auto;
     border-width: 1px;}
-#create_new_list_item_button { float: right; font-style: bold; }
+#create_new_list_item_button { float: right;}
 #main_body { background-color : #839D79 ; height: 100% ;}
 .outer_hr { display: block;
     margin-top: 0.2em;
@@ -21,10 +20,9 @@
     border-width: 1px;
 	border-color: #839D79 ;
 	}
-.container { height: 100% of the body height , minus footer ; }
 footer {height : 50px ;}
 tr { border-bottom: 1px solid #ddd }
-#title_row { background-color: #D1DCD3;}
+#title_row, #title_row_1, #title_row_2, #title_row_3, #title_row_4 { background-color: #D1DCD3;}
 .dropdown { display : inline}
 #create_item {margin:auto ; width : 50% ; font-size : 30px ; font-family: "Open Sans" , serif;}
 #save_button { margin:auto ; width : 50% ;}
@@ -35,6 +33,4 @@ tr { border-bottom: 1px solid #ddd }
 .laCol-1 { width : 30%}
 .laCol-2 { width : 50% }
 .laCol-3 { width: 20% }
-#save_button2 { float: center } 
-#email-username-addon-tag {float:center}
-#user-password {float:center}
+.questionheading {font-family: "Helvetica", serif;}
