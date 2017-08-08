@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Delete BucketList :: CreatePage</title>
+    <title>Delete Activity :: BucketList</title>
 
     <!-- Bootstrap -->
     <link href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -18,21 +18,22 @@
     <![endif]-->
   </head>
   <body>
-	<div class = "col-sm-3 col-xs-3 col-md-3">
-    <a href="/ViewBucketList">  
-	  </a>
-    </div>
-	<div class = "col-sm-9 col-xs-9 col-md-9">
-	  <h3 id = "create_item" >Delete Activity</h3>
-	</div>
-	<div class = "col-sm-3 col-xs-3 col-md-3">
-	</div>
-	<p>Are you sure you want to delete the item below?</p>
-	<table class = "table" >
+  <div class = "theClass col-xs-12 col-sm-12 col-md-12" >
+  Delete Activity 
+  </div>
+  <table class = "table">
+    <tr id = "title_row_4">
+      <th>
+      Are you sure you want to delete the item below?
+      </th>
+    </tr>
+  </table>
+  <table class = "table" >
     <form class = "form-group" method = "POST">
 	  <tr>
 		  <td class = "column1" ><label class = "labels">{{ activity_item_chosen }}</label></td>
       <td><button type = "submit" class = "btn btn-danger" id = "save_button" value = "Submit" >Delete</button></td>
+       <td><a href = "/ViewActivities/{{bucket_index}}"><span class = "btn btn-primary" id = "exit_activity_2" aria-hidden="true" >Exit to Activity List</span></a></td>
     </tr>
 	  </form>
 	</table>
