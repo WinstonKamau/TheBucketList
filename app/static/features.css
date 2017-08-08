@@ -1,6 +1,6 @@
 #first_row { background-color : #98D378 ; }
 #first_column { color:white;  font-size : 50px ; font-family: "Lato" , "Open Sans" , serif; }
-#log_in_button, #submit_button, #exit_bucket, #exit_bucket_1, #exit_bucket_3, #exit_bucket_2, #exit_activity_2, #exit_activity{ float: right; background-color : #558160 ; }
+#log_in_button, #submit_button, #exit_bucket, #exit_bucket_1, #exit_bucket_3, #exit_bucket_2, #exit_activity_2, #exit_activity { float: right; background-color : #558160 ; }
 #second_row_second_column { background-color : #D1DCD3; } 
 .theClass { display: inline ; font-family: "Lato" , "Open Sans" , serif ; font-size:50px ; font-style : italic; color : white ; background-color : #98D378 ;}
 .inner_hr { 
