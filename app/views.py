@@ -92,7 +92,7 @@ def view_bucket_list():
     if request.method == "POST":
         return redirect(url_for('create_bucket_list'))
     bucket_items = BucketList().view_bucket()
-    name_of_user = Users().users[Users.get_id()].user_name
+    name_of_user = Users().users[Users.get_id()].user_name.upper()
     if name_of_user.endswith('s'):
         name_of_user += "'"
     else:
