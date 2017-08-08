@@ -8,4 +8,7 @@ install:
 # command to run tests
 script: 
  - pytest
- - nosetests
+ - nosetests --with-coverage --cover-package=tests
+after_success: 
+ - coveralls
+ - coverage report
