@@ -9,5 +9,8 @@ install:
 script: 
  - pytest
  - nosetests
+ - coverage run --source=. py.test && nosetests && coverage report
  - coveralls
-after_success: coveralls
+after_success: 
+ - coveralls
+ - coverage report
