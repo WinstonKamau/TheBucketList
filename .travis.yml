@@ -11,4 +11,4 @@ script:
  - nosetests --cover-tests
 after_success: 
  - coveralls
- - coveragereport
+ - coverage report
