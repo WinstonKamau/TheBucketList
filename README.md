@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.org/WinstonKamau/TheBucketList.svg?branch=master)](https://travis-ci.org/WinstonKamau/TheBucketList)
+[![Coverage Status](https://coveralls.io/repos/github/WinstonKamau/TheBucketList/badge.svg)](https://coveralls.io/github/WinstonKamau/TheBucketList)
+[![Code Climate](https://codeclimate.com/github/WinstonKamau/TheBucketList/badges/gpa.svg)](https://codeclimate.com/github/WinstonKamau/TheBucketList)
+[![Issue Count](https://codeclimate.com/github/WinstonKamau/TheBucketList/badges/issue_count.svg)](https://codeclimate.com/github/WinstonKamau/TheBucketList)
 # The Bucket-List
 An application that allows users to record and view things they want to achieve or experience before reaching a certain age meeting the needs of keeping track of their needs and goals. 
 
