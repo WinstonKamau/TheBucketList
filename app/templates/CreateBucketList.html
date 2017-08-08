@@ -18,20 +18,16 @@
     <![endif]-->
   </head>
   <body>
-	<div class = "col-sm-3 col-xs-3 col-md-3">
+  <div class = "theClass col-xs-12 col-sm-12 col-md-12" >
+   Create BucketList 
 	</div>
-	<div class = "col-sm-9 col-xs-9 col-md-9">
-	  <h3 id = "create_item" >Create BucketList</h3>
-	</div>
-	<div class = "col-sm-3 col-xs-3 col-md-3">
-	</div>
-	<h4>Details</h4>
 	<table class = "table" >
     <form class = "form-group" method = "POST">
 	  <tr>
-		  <td class = "column1" ><label class = "labels">BucketList Name</label></td>
+		  <td class = "column1" ><label class = "labels">New BucketList Name</label></td>
 		  <td class = "column2" ><input name = "bucketlistcreated" type = "text" placeholder = "Name" class = "form-control" ></td>
       <td><button type = "submit" class = "btn btn-primary" id = "save_button" value = "Submit" >Save</button></td>
+       <td><a href = "/ViewBucketList"><span class = "btn btn-primary" id = "exit_bucket_3" aria-hidden="true" >Exit to BucketList</span></a></td>
     </tr>
 	  </form>
   </table>
