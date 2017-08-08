@@ -18,20 +18,23 @@
     <![endif]-->
   </head>
   <body>
-	<div class = "col-sm-3 col-xs-3 col-md-3">
-	</div>
-	<div class = "col-sm-9 col-xs-9 col-md-9">
-	  <h3 id = "create_item" >Edit Activity</h3>
-	</div>
-	<div class = "col-sm-3 col-xs-3 col-md-3">
-	</div>
-	<h4>Activity Name: <strong>{{the_activity}}</strong></h4>
-	<table class = "table" >
+  <div class = "theClass col-xs-12 col-sm-12 col-md-12" >
+   Edit Activity 
+  </div>
+  <table class = "table">
+    <tr id = "title_row_3">
+      <th>  
+        Activity Name: <strong>{{the_activity}}</strong>
+      </th>
+    </tr>
+  </table>
+  <table class = "table" >
     <form class = "form-group" method = "POST">
 	  <tr>
 		  <td class = "column1" ><label class = "labels">New Activity Name</label></td>
 		  <td class = "column2" ><input name = "new_activity" type = "text" placeholder = "Activity" class = "form-control" ></td>
       <td><button type = "submit" class = "btn btn-primary" id = "save_button" value = "Submit" >Save</button></td>
+      <td><a href = "/ViewActivities/{{bucket_index}}"><span class = "btn btn-primary" id = "exit_activity" aria-hidden="true" >Exit to ActivityList</span></a></td>
     </tr>
 	  </form>
   </table>
