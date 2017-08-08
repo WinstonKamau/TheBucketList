@@ -3,14 +3,12 @@ that is used to create and log in users and to create edit view and delete bucke
 names and activities.
 '''
 
-users = []
-user_id = 0
-
-
+USER_ID = 0
 class Users(object):
     '''A class for users of the app.  '''
 
 
+    users = []
     def __init__(self, user_name=None, user_email=None, user_password=None):
         '''Initialising the variables for the Users class.  '''
         if user_name and user_password and user_email:
@@ -25,29 +23,31 @@ class Users(object):
 
     def create_user(self, user_name, user_email, password, password_confirm):
         '''A method for creating a user.  '''
-        global users
-        for user_object in users:
+        for user_object in self.users:
             if user_object.user_email == user_email:
                 return "similar email"
-        for user_object in users:
+        for user_object in self.users:
             if user_object.user_name == user_name:
                 return "similar name"
         if user_name != "" and user_email != "" and password != "" and password == password_confirm:
             user = Users(user_name, user_email, password)
-            users.append(user)
+            self.users.append(user)
             return "all values okay"
 
     def login_user(self, user_email, password):
         '''A method for login in a user and ensuring that the user name and password is
         not blank.
         '''
-        global users
-        global user_id
-        for member in users:
+        global USER_ID
+        for member in self.users:
             if member.user_email == user_email and member.user_password == password:
-                user_id = users.index(member)
+                USER_ID = self.users.index(member)
                 return True
 
+    @classmethod
+    def get_id(cls):
+        '''A method to return the user_id'''
+        return USER_ID
 
 class BucketList(object):
     '''A class for the bucketlist.  '''
@@ -62,75 +62,67 @@ class BucketList(object):
             self.bucket_name = None
             self.activity_list = []
 
-    def create_bucket(self, bucket_name):
+    @staticmethod
+    def create_bucket(bucket_name):
         '''A method to create a bucket.  '''
-        global users
-        global user_id
         similar_names = False
-        for bucket_object in users[user_id].user_bucket:
+        for bucket_object in Users().users[Users().get_id()].user_bucket:
             if bucket_object.bucket_name.lower() == bucket_name.lower():
                 similar_names = True
         if bucket_name != "" and similar_names is False:
             bucket = BucketList(bucket_name)
-            users[user_id].user_bucket.append(bucket)
+            Users().users[Users().get_id()].user_bucket.append(bucket)
             return True
 
-    def view_bucket(self):
+    @staticmethod
+    def view_bucket():
         '''A method to return a bucket for a user.  '''
-        global users
-        global user_id
-        return users[user_id].user_bucket
+        return Users().users[Users().get_id()].user_bucket
 
-    def edit_bucket(self, bucket_index, new_name):
+    @staticmethod
+    def edit_bucket(bucket_index, new_name):
         '''A method to edit a bucket object its bucket name.  '''
-        global users
-        global user_id
         similar_names = False
-        for bucket_object in users[user_id].user_bucket:
+        for bucket_object in Users().users[Users().get_id()].user_bucket:
             if bucket_object.bucket_name.lower() == new_name.lower():
                 similar_names = True
         if new_name != "" and similar_names is False:
-            users[user_id].user_bucket[bucket_index].bucket_name = new_name
+            Users().users[Users().get_id()].user_bucket[bucket_index].bucket_name = new_name
             return True
 
-    def delete_bucket(self, bucket_index):
+    @staticmethod
+    def delete_bucket(bucket_index):
         '''A method to remove a bucket object.  '''
-        global users
-        global user_id
-        users[user_id].user_bucket.pop(bucket_index)
+        Users().users[Users().get_id()].user_bucket.pop(bucket_index)
 
-    def create_activity(self, bucket_index, new_activity):
+    @staticmethod
+    def create_activity(bucket_index, new_activity):
         '''A method to create an activity.  '''
-        global users
-        global user_id
         similar_names = False
-        for activity_object in users[user_id].user_bucket[bucket_index].activity_list:
+        for activity_object in Users().users[Users().get_id()].user_bucket[bucket_index].activity_list:
             if activity_object.lower() == new_activity.lower():
                 similar_names = True
         if new_activity != "" and similar_names is False:
-            users[user_id].user_bucket[bucket_index].activity_list.append(new_activity)
+            Users().users[Users().get_id()].user_bucket[bucket_index].activity_list.append(new_activity)
             return True
 
-    def view_activity(self, bucket_index):
+    @staticmethod
+    def view_activity(bucket_index):
         '''A method to return an activity list for a user.  '''
-        global users
-        global user_id
-        return users[user_id].user_bucket[bucket_index].activity_list
+        return Users().users[Users().get_id()].user_bucket[bucket_index].activity_list
 
-    def edit_activity(self, bucket_index, index_of_activity, edited_activity):
+    @staticmethod
+    def edit_activity(bucket_index, index_of_activity, edited_activity):
         '''A method to edit an activity.  '''
-        global users
-        global user_id
         similar_names = False
-        for activity_object in users[user_id].user_bucket[bucket_index].activity_list:
+        for activity_object in Users().users[Users().get_id()].user_bucket[bucket_index].activity_list:
             if activity_object.lower() == edited_activity.lower():
                 similar_names = True
         if edited_activity != "" and similar_names is False:
-            users[user_id].user_bucket[bucket_index].activity_list[index_of_activity] = edited_activity
+            Users().users[Users().get_id()].user_bucket[bucket_index].activity_list[index_of_activity] = edited_activity
             return True
 
-    def delete_activity(self, bucket_index, index_of_activity):
+    @staticmethod
+    def delete_activity(bucket_index, index_of_activity):
         '''A method to delete an activity.  '''
-        global users
-        global user_id
-        users[user_id].user_bucket[bucket_index].activity_list.pop(index_of_activity)
+        Users().users[Users().get_id()].user_bucket[bucket_index].activity_list.pop(index_of_activity)
