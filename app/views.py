@@ -92,18 +92,24 @@ def view_bucket_list():
     if request.method == "POST":
         return redirect(url_for('create_bucket_list'))
     bucket_items = BucketList().view_bucket()
-    return render_template("ViewBucketList.html", bucket_items=bucket_items, prompt=prompt)
+    name_of_user = Users().users[Users.get_id()].user_name
+    if name_of_user.endswith('s'):
+        name_of_user += "'"
+    else:
+        name_of_user += "'s"
+    return render_template("ViewBucketList.html", bucket_items=bucket_items, prompt=prompt, name_of_user=name_of_user)
 
 #binding view_activities function to the url /ViewActivities
 @app.route('/ViewActivities/<index>')
 def view_activities(index):
     '''A method that returns the route of viewactivities in the html.  '''
     activity_items = BucketList().view_activity(int(index))
+    bucket_name = BucketList().view_bucket()[int(index)].bucket_name
     spacer = "x"
     prompt = "You currently have no activities on the activity list, "
     prompt += "press the create activity button to create a new activity!"
     return render_template("ViewActivities.html", activity_items=activity_items,
-                           index=index, spacer=spacer, prompt=prompt)
+                           index=index, spacer=spacer, prompt=prompt, bucket_name=bucket_name)
 
 #binding add_Activities function to the url /AddActivities
 @app.route('/AddActivities/<bucket_index>', methods=['GET', 'POST'])
@@ -119,7 +125,7 @@ def add_activities(bucket_index):
                 error = "Ensure that the activity inserted is not an empty string!"
             else:
                 error = "'"+activity+"' already exists in the activity list!"
-    return render_template("AddActivities.html", error=error)
+    return render_template("AddActivities.html", error=error, bucket_index=bucket_index)
 
 #binding add_Activities function to the url /AddActivities
 @app.route('/EditActivity/<indices>', methods=['GET', 'POST'])
@@ -138,7 +144,7 @@ def edit_activities(indices):
             else:
                 error = "'"+new_activity+"' already exists in the activity list"
     the_activity = BucketList().view_bucket()[int(bucket_index)].activity_list[int(activity_index)]
-    return render_template("EditActivity.html", error=error, the_activity=the_activity)
+    return render_template("EditActivity.html", error=error, the_activity=the_activity, bucket_index=bucket_index)
 
 @app.route('/DeleteActivity/<indices>', methods=['GET', 'POST'])
 def delete_activities(indices):
@@ -149,7 +155,7 @@ def delete_activities(indices):
         BucketList().delete_activity(int(bucket_index), int(activity_index))
         return redirect('/ViewActivities/'+bucket_index)
     activity_item_chosen = BucketList().view_bucket()[int(bucket_index)].activity_list[int(activity_index)]
-    return render_template("DeleteActivity.html", activity_item_chosen=activity_item_chosen)
+    return render_template("DeleteActivity.html", activity_item_chosen=activity_item_chosen, bucket_index=bucket_index)
 
 @app.route('/Logout')
 def log_out():
