@@ -47,6 +47,7 @@ class Users(object):
     @classmethod
     def get_id(cls):
         '''A method to return the user_id'''
+        global USER_ID
         return USER_ID
 
 class BucketList(object):
