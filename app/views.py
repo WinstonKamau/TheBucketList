@@ -75,12 +75,7 @@ def edit_bucket_list(index=None):
 
 @app.route('/DeleteBucketList/<index>', methods=['GET', 'POST'])
 def delete_bucket_list(index=None):
-<<<<<<< HEAD
     '''a method that redirects to view and deletes buckets in the bucketlist'''
-=======
-    '''A method that returns the view for viewbucketlist after the user has opted to delete
-    or to not delete.  '''
->>>>>>> d0dff519836adbf63c08951c7e3d95fd38737c08
     if request.method == "POST":
         BucketList().delete_bucket(int(index))
         return redirect(url_for('view_bucket_list'))
